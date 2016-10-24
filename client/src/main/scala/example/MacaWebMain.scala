@@ -58,7 +58,7 @@ object MacaWebMain extends js.JSApp {
 
   window.onhashchange = { _: Event => router := js.Dynamic.global.decodeURIComponent(window.location.hash.drop(1)).toString }
 
-  val router = Var("")
+  val router = Var("goods")
 
   @dom
   def content: Binding[Node] = {

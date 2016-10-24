@@ -71,7 +71,7 @@ object Goods {
           <div class="col m3 s12" onmouseover={ onMouseOverOut(i) } onmouseout= { onMouseOverOut(i) }>
               <div class="card small" data:id={s"qnt${i.id}"}>
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src={i.image.headOption.getOrElse("")}/>
+                  <img class="activator responsive-img" src={i.image.headOption.getOrElse("")}/>
                   </div>
                   <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4 float-text">{i.title}
