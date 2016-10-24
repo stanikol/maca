@@ -52,7 +52,7 @@ class Images @Inject()(db: models.DBService,  cached: Cached, cacheMan: CacheMan
         }
       )
       val addNewImage = images += newImage
-      db.runAsync(addNewImage).map { res => res
+      db.runAsync(addNewImage).map { res =>
         val msg: String =
           s"\n${contentType.map(c=>s"$c with filename ").getOrElse("")} `$filename` is saved.\n" +
             resizeTo.map{ case (h, w) => s" and resized to $h x $w." }.getOrElse(".")
