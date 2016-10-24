@@ -31,24 +31,24 @@ object Goods {
     }
     <div class="qnt hide">
       <div class="btn-floating red lighten-1">
-      <i class=" material-icons small fa fa-minus-square-o"
+      <i class="fa fa-minus-square-o"
          data:aria-hidden="true"
          onclick={ event: Event =>
            val newQnt = q.get.toInt - 1
            q := (if(newQnt>0) newQnt else 1).toString
          }
-      />
+      ></i>
       </div>
       <div class="center-block center btn-flat waves-effect waves-red" onclick={addToCart}>
-        <i class="fa fa-cart-arrow-down center-block center" data:aria-hidden="true">{q.bind} шт.</i>
+        <i class="fa fa-cart-arrow-down center-block center" data:aria-hidden="true"></i>{q.bind} шт.
       </div>
       <div class="btn-floating red lighten-1">
-        <i class="material-icons small fa fa-plus-square-o"
+        <i class="fa fa-plus-square-o"
            data:aria-hidden="true"
            onclick={event: Event =>
              q := (q.get.toInt + 1).toString
            }
-        />
+        ></i>
       </div>
     </div>
   }
