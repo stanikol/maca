@@ -68,7 +68,7 @@ object Goods {
     val resultDom =
       <div class="row">
         {for (i <- showroom) yield {
-          <div class="col s3" onmouseover={ onMouseOverOut(i) } onmouseout= { onMouseOverOut(i) }>
+          <div class="col m3 s12" onmouseover={ onMouseOverOut(i) } onmouseout= { onMouseOverOut(i) }>
               <div class="card small" data:id={s"qnt${i.id}"}>
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator" src={i.image.headOption.getOrElse("")}/>
