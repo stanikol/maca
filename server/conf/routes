@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+
+# Count Controller
+GET     /count                      controllers.CountController.count
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /webjars/*file              controllers.WebJarAssets.at(file)
+
+GET     /img/*file                  controllers.Images.getFile(file)
+GET     /images                     controllers.Images.list(q: Option[String] ?= None, c: Option[String] ?= None)
+POST    /images                     controllers.Images.save
+POST    /images/del/*q              controllers.Images.delete(q: String)
+GET     /goods                      controllers.Goods.index

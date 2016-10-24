@@ -1,0 +1,1 @@
+"\\d+".r.findFirstIn("dassa 234").get
