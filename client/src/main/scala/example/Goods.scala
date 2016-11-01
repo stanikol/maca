@@ -39,7 +39,7 @@ object Goods {
          }
       ></i>
       </div>
-      <div class="center-block center btn-flat waves-effect waves-red" onclick={addToCart}>
+      <div class="center-block center btn-flat waves-effect waves-red disabled" onclick={addToCart}>
         <i class="fa fa-cart-arrow-down center-block center" data:aria-hidden="true"></i>{q.bind} шт.
       </div>
       <div class="btn-floating red lighten-1">
@@ -62,6 +62,7 @@ object Goods {
       def eventHandler(e: Event) = {
         jQuery(s"#qnt${i.id} .qnt").toggleClass("hide")
         jQuery(s"#qnt${i.id} .price").toggleClass("hide")
+        jQuery(s"#qnt${i.id} .btn-flat").toggleClass("disabled")
       }
       eventHandler _
     }
