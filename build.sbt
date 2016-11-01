@@ -32,8 +32,8 @@ lazy val server = (project in file("server")).settings(
     "com.mohiva" %% "play-silhouette-crypto-jca" % "4.0.0",
     "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
     "net.codingwell" %% "scala-guice" % "4.0.1",
-    "com.iheart" %% "ficus" % "1.2.6",
-//    "com.iheart" %% "ficus" % "1.2.3",
+//    "com.iheart" %% "ficus" % "1.2.6",
+    "com.iheart" %% "ficus" % "1.3.0",
     "com.typesafe.play" %% "play-mailer" % "5.0.0",
     //
     filters,
@@ -43,7 +43,8 @@ lazy val server = (project in file("server")).settings(
   // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
   EclipseKeys.preTasks := Seq(compile in Compile),
   resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/" ,
-  scalacOptions ++= Seq("-deprecation")
+  resolvers += Resolver.jcenterRepo,
+    scalacOptions ++= Seq("-deprecation")
 ).enablePlugins(PlayScala).dependsOn(sharedJvm)
 
 lazy val client = (project in file("client")).settings(
