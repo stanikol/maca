@@ -30,7 +30,7 @@ lazy val server = (project in file("server")).settings(
     "com.mohiva" %% "play-silhouette-password-bcrypt" % "4.0.0",
     "com.mohiva" %% "play-silhouette-persistence" % "4.0.0",
     "com.mohiva" %% "play-silhouette-crypto-jca" % "4.0.0",
-    "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
+//    "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
     "net.codingwell" %% "scala-guice" % "4.0.1",
     "com.iheart" %% "ficus" % "1.2.6",
     "com.typesafe.play" %% "play-mailer" % "5.0.0",
