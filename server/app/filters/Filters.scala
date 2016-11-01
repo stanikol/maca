@@ -9,6 +9,7 @@ import akka.stream.Materializer
 import play.api.Logger
 import play.api.http.DefaultHttpFilters
 import play.api.mvc.{Filter, RequestHeader, Result}
+import play.filters.csrf.CSRFFilter
 import play.filters.gzip.GzipFilter
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -45,5 +46,5 @@ class LoggingFilter @Inject() (implicit val mat: Materializer, ec: ExecutionCont
 // needs to be configured using play.http.filters
 // in application.conf:
 //          play.http.filters = "filters.MyFilters"
-class Filters @Inject() (gzipFilter: GzipFilter, loggingFilter: LoggingFilter)
-  extends DefaultHttpFilters(gzipFilter, loggingFilter)
+class Filters @Inject() (gzipFilter: GzipFilter, loggingFilter: LoggingFilter, csrfFilter: CSRFFilter)
+  extends DefaultHttpFilters(gzipFilter, loggingFilter, csrfFilter)

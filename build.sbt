@@ -23,6 +23,18 @@ lazy val server = (project in file("server")).settings(
     "org.webjars" % "materializecss" % "0.97.7",
     "com.lihaoyi" %% "upickle" % "0.4.3",
     "org.webjars" % "font-awesome" % "4.6.3",
+    // silhouette
+    "org.webjars" % "requirejs" % "2.3.1",
+    "com.adrianhurt" %% "play-bootstrap" % "1.1-P25-B3",	// Add bootstrap helpers and field constructors (http://adrianhurt.github.io/play-bootstrap/)
+    "com.mohiva" %% "play-silhouette" % "4.0.0",
+    "com.mohiva" %% "play-silhouette-password-bcrypt" % "4.0.0",
+    "com.mohiva" %% "play-silhouette-persistence" % "4.0.0",
+    "com.mohiva" %% "play-silhouette-crypto-jca" % "4.0.0",
+    "com.mohiva" %% "play-silhouette-testkit" % "4.0.0" % "test",
+    "net.codingwell" %% "scala-guice" % "4.0.1",
+    "com.iheart" %% "ficus" % "1.2.6",
+    "com.typesafe.play" %% "play-mailer" % "5.0.0",
+    //
     filters,
     cache,
     specs2 % Test
