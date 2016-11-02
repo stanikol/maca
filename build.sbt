@@ -1,6 +1,7 @@
 lazy val scalaV = "2.11.8"
 
 lazy val server = (project in file("server")).settings(
+  herokuAppName in Compile := "maca",
   scalaVersion := scalaV,
   scalaJSProjects := Seq(client, admin),
   pipelineStages in Assets := Seq(scalaJSPipeline),
@@ -45,7 +46,7 @@ lazy val server = (project in file("server")).settings(
   resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/" ,
   resolvers += Resolver.jcenterRepo,
   scalacOptions ++= Seq("-deprecation")
-).enablePlugins(PlayScala).dependsOn(sharedJvm)
+).enablePlugins(PlayScala, JavaAppPackaging).dependsOn(sharedJvm)
 
 lazy val client = (project in file("client")).settings(
   scalaVersion := scalaV,
@@ -97,5 +98,7 @@ lazy val sharedJs = shared.js
 // loads the server project at sbt startup
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
 
+herokuAppName in Compile := "maca"
+enablePlugins(JavaAppPackaging)
 
 fork in run := true
