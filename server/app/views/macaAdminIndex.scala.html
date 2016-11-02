@@ -1,0 +1,8 @@
+@(message: String)(implicit webJarAssets: WebJarAssets)
+
+@macaMain("Maca") {
+  @scalajs.html.scripts("admin",
+    routes.Assets.versioned(_).toString,
+    name => getClass.getResource(s"/public/$name") != null)
+
+}

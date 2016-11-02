@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.MacaApp.index
+GET     /admin                      controllers.MacaAdmin.index
 
 # Count Controller
 GET     /count                      controllers.CountController.count
@@ -16,6 +17,9 @@ GET     /images                     controllers.Images.list(q: Option[String] ?=
 POST    /images                     controllers.Images.save
 POST    /images/del/*q              controllers.Images.delete(q: String)
 GET     /goods                      controllers.Goods.index
+GET     /shop                       controllers.Shop.index(id = "0", qnt = "1")
+GET     /shop/:id                   controllers.Shop.index(id: String, qnt = "1")
+GET     /shop/:id/:qnt              controllers.Shop.index(id, qnt)
 
 ####################################################################################################
 # Routes form play-silhouette-credentials-seed

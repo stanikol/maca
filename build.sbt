@@ -2,7 +2,7 @@ lazy val scalaV = "2.11.8"
 
 lazy val server = (project in file("server")).settings(
   scalaVersion := scalaV,
-  scalaJSProjects := Seq(client),
+  scalaJSProjects := Seq(client, admin),
   pipelineStages in Assets := Seq(scalaJSPipeline),
   pipelineStages := Seq(digest, gzip),
   // triggers scalaJSPipeline when using compile or continuous compilation
@@ -44,7 +44,7 @@ lazy val server = (project in file("server")).settings(
   EclipseKeys.preTasks := Seq(compile in Compile),
   resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/" ,
   resolvers += Resolver.jcenterRepo,
-    scalacOptions ++= Seq("-deprecation")
+  scalacOptions ++= Seq("-deprecation")
 ).enablePlugins(PlayScala).dependsOn(sharedJvm)
 
 lazy val client = (project in file("client")).settings(
@@ -66,8 +66,29 @@ lazy val client = (project in file("client")).settings(
 ).enablePlugins(ScalaJSPlugin, ScalaJSWeb).
   dependsOn(sharedJs)
 
+lazy val admin = (project in file("admin")).settings(
+  scalaVersion := scalaV,
+  persistLauncher := true,
+  scalacOptions ++= Seq("-Xmax-classfile-name","78"),
+  persistLauncher in Test := false,
+  addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full),
+  libraryDependencies ++= Seq(
+    "org.scala-js" %%% "scalajs-dom" % "0.9.1",
+    "org.scala-lang.modules" % "scala-xml_2.11" % "1.0.6",
+    "com.thoughtworks.binding" %%% "dom" % "10.0.0-M1",
+    "com.thoughtworks.binding" %%% "futurebinding" % "10.0.0-M1",
+    "fr.hmil" %%% "roshttp" % "1.1.0",
+    "be.doeraene" %%% "scalajs-jquery" % "0.9.0",
+    "io.udash" %%% "udash-jquery" % "1.0.0",
+    "com.lihaoyi" %%% "upickle" % "0.4.3"
+  )
+).enablePlugins(ScalaJSPlugin, ScalaJSWeb).
+  dependsOn(sharedJs)
+
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
-  settings(scalaVersion := scalaV).
+  settings(scalaVersion := scalaV,
+    libraryDependencies += "com.lihaoyi" %% "upickle" % "0.4.3"
+  ).
   jsConfigure(_ enablePlugins ScalaJSWeb)
 
 lazy val sharedJvm = shared.jvm
