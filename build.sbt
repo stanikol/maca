@@ -8,6 +8,7 @@ lazy val server = (project in file("server")).settings(
   pipelineStages := Seq(digest, gzip),
   // triggers scalaJSPipeline when using compile or continuous compilation
   compile in Compile <<= (compile in Compile) dependsOn scalaJSPipeline,
+//  mainClass in assembly := Some("com.example.Main")
   libraryDependencies ++= Seq(
     "com.h2database" % "h2" % "1.4.192",
     "com.typesafe.play" % "play-slick_2.11" % "2.0.2",

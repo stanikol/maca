@@ -209,7 +209,6 @@ target
 target/
 project/boot
 images
-#conf/application.conf
 delme
 images
 
