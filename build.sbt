@@ -1,16 +1,14 @@
 lazy val scalaV = "2.11.8"
 
 lazy val server = (project in file("server")).settings(
-  herokuAppName in Compile := "maca",
   scalaVersion := scalaV,
   scalaJSProjects := Seq(client, admin),
   pipelineStages in Assets := Seq(scalaJSPipeline),
   pipelineStages := Seq(digest, gzip),
   // triggers scalaJSPipeline when using compile or continuous compilation
   compile in Compile <<= (compile in Compile) dependsOn scalaJSPipeline,
-//  mainClass in assembly := Some("com.example.Main")
   libraryDependencies ++= Seq(
-    "com.h2database" % "h2" % "1.4.192",
+//    "com.h2database" % "h2" % "1.4.192",
     "com.typesafe.play" % "play-slick_2.11" % "2.0.2",
     "com.typesafe.play" %% "play-slick-evolutions" % "2.0.2",
     "com.vmunier" %% "scalajs-scripts" % "1.0.0",
@@ -100,6 +98,16 @@ lazy val sharedJs = shared.js
 onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
 
 herokuAppName in Compile := "maca"
+mainClass in assembly := Some("play.core.server.NettyServer")
+assemblyMergeStrategy in assembly := {
+  case PathList("javax", "servlet", xs @ _*)         => MergeStrategy.first
+  case PathList(ps @ _*) if ps.last endsWith ".html" => MergeStrategy.first
+  case "application.conf"                            => MergeStrategy.concat
+  case "unwanted.txt"                                => MergeStrategy.discard
+  case x =>
+    val oldStrategy = (assemblyMergeStrategy in assembly).value
+    oldStrategy(x)
+}
 enablePlugins(JavaAppPackaging)
 
 fork in run := true

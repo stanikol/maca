@@ -30,23 +30,28 @@ object MacaWebMain extends js.JSApp {
   }
 
   @dom
-  def macaWebMain = {
+  private def shopingCart = {
     Goods.doShopping(shopped)
+    <div class="col s12 m5 l3 right container row">
+      <div class="col s2 m3">
+        <i class="material-icons medium">shopping_cart</i>
+      </div>
+      <div class="col s10 m9 flow-text">
+        { shopped.bind.qnt.toString } ед. на сумму { shopped.bind.total.toString } грн.<br/>
+        <a href="#payment" class="btn btn-default small">
+          Оформить
+        </a>
+      </div>
+    </div>
+  }
+
+  @dom
+  def macaWebMain: Binding[Node] = {
     <div>
       { NavigationBar.navigationBar.bind }
       <div data:id = "content">
         <div class="row">
-          <div class="col s3 offset-s8 right container row">
-            <div class="col s2">
-              <i class="material-icons medium">shopping_cart</i>
-            </div>
-            <div class="col s10">
-              { shopped.bind.qnt.toString } ед. на сумму { shopped.bind.total.toString } грн.
-              <a href="#payment" class="btn btn-default small">
-                Оплатить
-              </a>
-            </div>
-          </div>
+            { shopingCart.bind }
         </div>
         { content.bind }<br/>
       </div>
