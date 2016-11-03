@@ -17,8 +17,25 @@ import shared.Model._
 object MacaAdmin extends js.JSApp {
 
 
+  @dom
+  def macaWebMain = {
+    <div>
+      <div data:id = "content">
+        <div class="row">
+          <div class="col s3 offset-s8 right container row">
+            <div class="col s2">
+              <i class="material-icons medium">shopping_cart</i>
+            </div>
+          </div>
+        </div>
+         content.bind <br/>
+      </div>
+
+    </div>
+  }
 
   def main(): Unit = {
     println("Hello")
+    val d = dom.render(document.body, macaWebMain)
   }
 }
