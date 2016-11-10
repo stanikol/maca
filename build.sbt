@@ -36,6 +36,7 @@ lazy val server = (project in file("server")).settings(
     "com.iheart" %% "ficus" % "1.3.0",
     "com.typesafe.play" %% "play-mailer" % "5.0.0",
     //
+    //
     filters,
     cache,
     specs2 % Test

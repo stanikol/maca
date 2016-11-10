@@ -28,7 +28,7 @@ class Shop @Inject()(db: models.DBService, cached: Cached) extends Controller {
       if(id == 0) {
         currentOrder
       } else if(currentOrder.keySet.contains(id)) {
-        currentOrder.updated(id, currentOrder(id) + qnt)
+        currentOrder.updated(id, qnt)
       } else {
         currentOrder + (id->qnt)
       }

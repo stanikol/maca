@@ -1,0 +1,51 @@
+@import "components/_color.scss";
+@import "components/_variables.scss";
+@import "materialize.scss";
+@import "components/_typography.scss";
+
+.shopingCart{
+    color: red;
+    @extend .col;
+    @extend .s12;
+    @extend .m5;
+    @extend .l3;
+    @extend .right;
+    @extend .container;
+    @extend .row;
+    i {
+        @extend .col;
+        @extend .s2;
+        @extend .m3;
+    };
+    span {
+        @extend .col;
+        @extend .s10;
+        @extend .m9;
+    };
+}
+
+
+.goods{
+    div.card {
+        @extend .col;
+        @extend .m3;
+        @extend .s12;
+        @extend .small;
+        .card-image {
+            @extend .waves-effect;
+            @extend .waves-block;
+            @extend .waves-light;
+        };
+        span.card-title {
+            @extend .activator;
+            @extend .grey-text;
+            @extend .text-darken-4;
+        };
+    };
+ };
+
+ .orderItem {
+    p {
+        display: inline-block;
+    };
+ };
