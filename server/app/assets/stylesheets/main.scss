@@ -24,7 +24,6 @@
     };
 }
 
-
 .goods{
     div.card {
         @extend .col;
@@ -49,3 +48,42 @@
         display: inline-block;
     };
  };
+
+ .orderedItems{
+     @extend .container;
+     @extend .row;
+     @extend .flow-text;
+    .orderRow {
+         @extend .row;
+         // @extend .flow-text;
+         .title, .qnt-price, .total {
+            @extend .col;
+            @extend .s3;
+         };
+        .qnt-price {
+            font-size: 50%;
+        };
+        .total {
+            font-size: 70%;
+        };
+        .pic {
+            @extend .col;
+            @extend .s3;
+            @extend .activator;
+            @extend .responsive-img;
+        };
+    };
+    .totalText {
+        @extend .col;
+        @extend .s9;
+    };
+    .totalAmount {
+        @extend .col;
+        @extend .s3;
+        font-size: 80%;
+    };
+    .shoppingButtons {
+        @extend .col;
+        @extend .s12;
+    };
+};

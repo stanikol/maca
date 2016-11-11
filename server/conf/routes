@@ -20,6 +20,7 @@ GET     /goods                      controllers.Goods.index
 GET     /shop                       controllers.Shop.index(id = "0", qnt = "1")
 GET     /shop/:id                   controllers.Shop.index(id: String, qnt = "1")
 GET     /shop/:id/:qnt              controllers.Shop.index(id, qnt)
+GET     /login                      controllers.Shop.logIn
 
 ####################################################################################################
 # Routes form play-silhouette-credentials-seed

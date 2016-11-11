@@ -153,6 +153,13 @@ class Auth @Inject() (
     }
   }
 
+//  def logIn = UserAwareAction { implicit request =>
+//    request.identity match {
+//      case Some(user) => Ok(s"OK: ${user.email}")
+//      case None       => Ok("ERROR")
+//    }
+//  }
+
   /**
    * Authenticates the user based on his email and password
    */
